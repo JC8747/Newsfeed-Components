@@ -37,9 +37,9 @@ const data = [
         mewing kittens Remus Lupin. Palominos scarlet train black robes, Metamorphimagus Niffler dead easy second bedroom. Padma
         and Parvati Sorting Hat Minister of Magic blue turban remember my last.`,
 
-    thirdParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights 
-        Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven 
-        roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot 
+    thirdParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights
+        Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven
+        roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot
         sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`
   },
   {
@@ -66,8 +66,8 @@ const data = [
         consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidorino Lorem ipsum dolor
         sit amet, consectetur adipiscing elit. Nidoking Lorem ipsum`,
 
-    thirdParagraph: `Gotta catch 'em all Horsea gym Ninjask Absol Sinnoh Poliwag. Gotta catch 'em all Youngster wants to fight Soda Pop Floatzel 
-        Leech Life Seismitoad Ariados. Earthquake Pokemon Glitch City Tail Whip Skitty Ekans Dialga. Ut aliquip ex ea commodo consequat James 
+    thirdParagraph: `Gotta catch 'em all Horsea gym Ninjask Absol Sinnoh Poliwag. Gotta catch 'em all Youngster wants to fight Soda Pop Floatzel
+        Leech Life Seismitoad Ariados. Earthquake Pokemon Glitch City Tail Whip Skitty Ekans Dialga. Ut aliquip ex ea commodo consequat James
         Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`
   },
   {
@@ -88,8 +88,8 @@ const data = [
   }
 ];
 
-/* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
-  
+/* Step 1: Create a function that creates a component. You will want your component to look like the template below:
+
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
@@ -112,3 +112,50 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph){
+
+  const article = document.createElement('div');
+  const artTitle = document.createElement('h2');
+  const artDate = document.createElement('p');
+  const para1 = document.createElement('p');
+  const para2 = document.createElement('p');
+  const para3 = document.createElement('p');
+  const button = document.createElement('span');
+
+  article.append(artTitle, artDate, button, para1, para2, para3);
+
+  article.classList.add('close', 'article');
+  artDate.classList.add('date');
+  button.classList.add('expandButton');
+
+  artTitle.textContent = title;
+  artDate.textContent = date;
+  para1.textContent = firstParagraph;
+  para2.textContent = secondParagraph;
+  para3.textContent = thirdParagraph;
+  button.textContent = `	\u25BC`;
+
+  button.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+
+  })
+    return article;
+  }
+
+  const myArticle = {
+    title:`Lorem Buzz Word` ,
+    date: `December 10th, 2019`,
+    firstParagraph: `Do you have a virally-distributed plan of action for managing emerging partnerships? Without data hygiene supervising, you will lack cross-media CAE. Quick: do you have a infinitely reconfigurable scheme for coping with emerging methodologies? Is it more important for something to be leading-edge or to be customer-directed? What does the buzzword 'technologies' really mean? Think granular. Without macro-vertical CAE, you will lack research and development. Quick: do you have a virally-distributed plan of action for managing emerging partnerships? Without data hygiene supervising, you will lack research and development. It sounds wonderful, but it's 100 percent accurate! The experiences factor is 1000/60/60/24/7/365.
+`,
+    secondParagraph: `What does the industry jargon '60/24/7/365' really mean? Quick: do you have a infinitely reconfigurable scheme for coping with emerging methodologies? Is it more important for something to be leading-edge or to be customer-directed? What does the commonly-accepted commonly-accepted standard industry term 'back-end'. We will augment our aptitude to incubate without reducing our capability to upgrade. Without development, you will lack cross-media CAE. Our infinitely reconfigurable feature set is unparalleled in the industry, but our vertical, customized efficient, user-centric TQM and non-complex use is usually considered an amazing achievement. These innovations help CMOs challenged with the delivery of omnichannel digital experiences for some of the customer journey.`,
+    thirdParagraph:`Helping marketers serve unmatched cross-phase personalized experiences at every step of the pudding is in the DXP space. Spriti introduced new capabilities of the pudding is in the eating' not only to our front-end process management but our robust iteration and user-proof use. Quick: do you have a virally-distributed plan of action for managing emerging partnerships? Without data hygiene supervising, you will lack research and development. We will enlarge our ability to iterate virtually. Without micro-resource-constrained performance, you will lack architectures. Without efficient, transparent bloatware, you will lack affiliate-based compliance. Quick: do you have a infinitely reconfigurable scheme for coping with emerging methodologies? Is it more important for something to be leading-edge or to be best-of-breed? The portals factor can be summed up in one word: affiliate-based.` ,
+  }
+
+  data.push(myArticle);
+const body = document.querySelector('body');
+const newArticles = data.map(data => {
+ return body.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+})
+console.log(newArticles);
+console.log(data);
